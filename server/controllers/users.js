@@ -362,3 +362,31 @@ exports.getPlayer = function (req, res) {
     });
 }
 
+/**
+ * All users
+ *
+ * @param req
+ * @param res
+ */
+exports.allWatchUsers = function (req, res) {
+    con.query("SELECT * FROM userswatching", function (err, result, fields) {
+        if (err) res.status(500).json(err);
+
+        res.status(200).json(result);
+      });
+};
+
+/**
+ * All users
+ *
+ * @param req
+ * @param res
+ */
+exports.allOneSignals = function (req, res) {
+    con.query("SELECT * FROM onesignal_player", function (err, result, fields) {
+        if (err) res.status(500).json(err);
+
+        res.status(200).json(result);
+      });
+};
+

@@ -118,6 +118,7 @@ router.route('/users/addPlayer').post(users.addPlayer);
 router.route('/users/getPlayer').post(users.getPlayer);
 router.route('/users/assignedByMe').post(users.assignedByMe);
 router.route('/users/notInWatch').post(users.NotinWatchList);
+router.route('/users/allWatchUsers').get(users.allWatchUsers);
 
 /**
  * Group Activities
@@ -138,6 +139,10 @@ router.route('/discussion/removeFromWatchListDiscussion').post(discussions.remov
 router.route('/discussion/addMessages').post(discussions.addMessages);
 router.route('/discussion/getMessages').post(discussions.getMessages);
 
+/**
+ * Onesignal Activities
+ */
+router.route('/onesignal/allOneSignals').get(users.allOneSignals);
 
 /**
  * Test for 200 response.  Useful when setting up Twilio callback.
