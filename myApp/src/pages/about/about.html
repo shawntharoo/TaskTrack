@@ -1,0 +1,112 @@
+<ion-header>
+    <ion-navbar color="indigo"  class="header_nav">
+      <ion-item no-lines color="indigo"  class="header_item">
+        <!-- <ion-icon name="menu" item-start></ion-icon> -->
+        <ion-title  class="header_title"> Users</ion-title>
+        <ion-icon name="ios-search" (click)="showSearch()" color="light" item-end></ion-icon>
+        <!-- <ion-icon name="ios-notifications" color="light" item-end></ion-icon> -->
+      </ion-item>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-card>
+      <ion-searchbar #searchToFocusAbout *ngIf="search" [(ngModel)]="name"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)"
+      (click)="searchUser()"></ion-searchbar>
+
+      <ion-item class="loadList" *ngFor="let user of allsearchUsers" (click)="fillBox(user)">
+          <ion-label>
+            <b>{{user.firstname}}</b>
+          </ion-label>
+        </ion-item>
+  </ion-card>
+
+      <ion-card>
+          <ion-card-header  class="frist_card_title">
+            User Summary
+          </ion-card-header>
+          <ion-item class="summery_underline">
+              <ion-icon name="eye" item-start></ion-icon>
+              <p class="f_card_link">Watch Users</p>
+              <ion-badge item-end class="badge">{{watchcount}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="eye-off" item-start></ion-icon>
+                <p class="f_card_link">Other Users</p>
+                <ion-badge item-end class="badge">{{othercount}}</ion-badge>
+              </ion-item>
+        </ion-card>
+  
+              
+        <ion-card>
+    <ion-list>
+  
+  
+      <ion-list-header text-center color="light">
+        <p class="list_title">Watch List</p>
+      </ion-list-header>
+      
+      <ion-list>
+        <p class="edit" (click)="enableRemovIcon()">Remove from watch</p>
+          <button ion-item *ngFor="let user of watchUsers"  class="list-button" (click)="groupDetailView(user)">
+            <ion-icon  *ngIf="removeicon" name="ios-remove-circle-outline" (click)="removeFromWatch(user);  $event.stopPropagation()" item-start color="danger"></ion-icon>
+            <ion-icon name="person" [style.color]="user.color" item-start></ion-icon>
+             <p class="title"> {{user.firstname}}</p>
+            <!-- <ion-icon item-end name="eye" class="view"></ion-icon> -->
+            <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+          </button>
+        </ion-list>
+  
+      <!-- <ion-item-sliding #item *ngFor="let user of watchUsers">    
+          <ion-item>
+              {{user.firstname}}
+          </ion-item>
+          <ion-item-options side="left">
+              <button ion-button color="danger" (click)="removeFromWatch(user)">Forget</button>
+          </ion-item-options>
+      
+          <ion-item-options side="right">
+              <button ion-button (click)="groupDetailView(user)">View</button>
+          </ion-item-options>
+        </ion-item-sliding> -->
+  
+      <ion-list-header text-center color="light">
+        <p class="list_title">All Users</p>
+      </ion-list-header>
+  
+      <ion-list>
+        <p class="edit" (click)="enableAddIcon()">Add to watch</p>
+          <button ion-item *ngFor="let user of otherUsers" class="list-button" (click)="groupDetailView(user)">
+            <ion-icon *ngIf="addicon" name="ios-add-circle-outline" (click)="addToWatch(user);  $event.stopPropagation()" item-start color="primary"></ion-icon>
+            <ion-icon name="person" [style.color]="user.color" item-start></ion-icon>
+            <p class="title"> {{user.firstname}}</p>
+            <!-- <ion-icon item-end name="eye" class="view"></ion-icon> -->
+            <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+          </button>
+        </ion-list>
+  
+      <!-- <ion-item-sliding #item *ngFor="let user of otherUsers">
+          <ion-item>
+              {{user.firstname}}
+          </ion-item>
+          <ion-item-options side="left">
+              <button ion-button color="danger" (click)="addToWatch(user)">Watch</button>
+          </ion-item-options>
+      
+          <ion-item-options side="right">
+              <button ion-button (click)="groupDetailView(user)">View</button>
+          </ion-item-options>
+        </ion-item-sliding> -->
+  
+  
+    </ion-list>
+  </ion-card>
+  
+    <ion-fab right bottom>
+      <button ion-fab color="light" class="fab_butt" (click)="addUser()">
+        <ion-icon name="person-add"  class="fab_icon"></ion-icon>
+      </button>
+    </ion-fab>
+  </ion-content>

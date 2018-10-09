@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="indigo"  class="header_nav">
+      <!-- <img src="assets/imgs/city.jpg" style="width:100%;"/> -->
+    <ion-item no-lines color="indigo" class="header_item">
+        <ion-title class="header_title"> Tasks</ion-title>
+      <ion-icon name="ios-funnel" md="md-funnel" (click)="showActionSheet()" color="light" item-end></ion-icon>
+      <!-- <ion-icon name="ios-notifications" color="light" item-end></ion-icon> -->
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header  class="frist_card_title">
+            Tasks Assigned To Me
+        </ion-card-header>
+      </ion-card>
+      <ion-card>
+
+          <ion-list>
+              <ion-item>
+                  <p item-start class="qfilter" [style.color]="all" (click)="qFilterTasks('all')">All | </p>
+                <p item-start class="qfilter" [style.color]="active" (click)="qFilterTasks('active')">Active | </p>
+                <!-- <p item-start class="qfilter" [style.color]="ontrack" (click)="qFilterTasks('onTrack')">On Track | </p> -->
+                <p item-start class="qfilter" [style.color]="delayed" (click)="qFilterTasks('delayed')">Delayed | </p>
+                <p item-start class="qfilter" [style.color]="done" (click)="qFilterTasks('completed')">Done | </p>
+                <p item-start class="qfilter" [style.color]="more" (click)="qFilterTasks('due')">   <ion-icon name="calendar"></ion-icon> </p>
+              </ion-item>
+            </ion-list>
+  <ion-list>
+      <ion-item-sliding #item  *ngFor="let task of allTasks | orderBy:order:caseInsensitive | filterBy:filter;">
+                
+          <button ion-item class="list-button" lines (click)="dasboardView(task)">
+              <!-- <ion-icon  *ngIf="removeicon" name="ios-remove-circle-outline" (click)="deleteTask(task);  $event.stopPropagation()" item-start color="danger"></ion-icon> -->
+            <ion-icon name="radio-button-off" *ngIf="task.status != 'Completed'" class="icon_first" [style.color]="task.color" item-start (click)="markComplete(task);  $event.stopPropagation()"></ion-icon>
+            <ion-icon name="checkmark" *ngIf="task.status == 'Completed'" class="icon_first" item-start (click)="markNotComplete(task);  $event.stopPropagation()"></ion-icon>
+           <p [ngClass]="{'strike' : task.status == 'Completed'}" class="title"> {{task.title}} </p>
+           <!-- <ion-icon item-end name="eye" class="view"></ion-icon> -->
+            <ion-icon md="ios-arrow-forward" class="arrow_color"  item-end></ion-icon>
+          </button>
+              <ion-item-options side="right">
+                <button ion-button color="danger" (click)="deleteTask(task);  $event.stopPropagation()">Delete</button>
+              </ion-item-options>
+            </ion-item-sliding>
+  </ion-list>
+</ion-card>
+
+<ion-card *ngIf="showMessage">
+  <ion-card-content>
+    <p>
+      No tasks to display
+    </p>
+  </ion-card-content>
+</ion-card>
+</ion-content>

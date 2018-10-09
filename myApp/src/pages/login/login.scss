@@ -1,0 +1,80 @@
+page-login {
+    background-color: map-get($colors, appbg) !important;
+    overflow: hidden;
+    ion-content {
+        background-color: map-get($colors, appbg) !important;
+        color: map-get($map: $colors, $key:apptxt) !important;
+        .login--container {
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            -webkit-transition: all 1s ease-in;
+            -moz-transition: all 1s ease-in;
+            -ms-transition: all 1s ease-in;
+            -o-transition: all 1s ease-in;
+            transition: all 1s ease-in;
+            .logo {
+                font-size: 60px;
+                font-weight: bold;
+                color: rgb(255, 255, 255);
+                span {
+                    color: map-get($map: $colors, $key: apppink)
+                }
+            }
+            .sub-title {
+                color: map-get($map: $colors, $key:apptxtdark) !important;
+                font-size: 16px;
+                font-weight: 400;
+                display: block;
+                margin-top: 10%;
+            }
+            button.login--button {
+                width: 100%;
+                font-size: 16px;
+                border: 2px solid map-get($map: $colors, $key: indigo);
+                padding: 12px 0px;
+                margin-top: 10%;
+                outline: none;
+                color: map-get($map: $colors, $key: indigo);
+                background: rgba(0, 0, 0, 0);
+                transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s;
+                padding: 10px;
+                .button--container {
+                    display: flex;
+                    justify-content: center;
+                    div {
+                        margin-left: 10px;
+                    }
+                }
+            }
+            button.login--button.activated {
+                color: map-get($map: $colors, $key: appbg);
+                background-color: map-get($map: $colors, $key: indigo);
+            }
+            .step--login2 {
+                -webkit-transition: all 1s ease-in;
+                -moz-transition: all 1s ease-in;
+                -ms-transition: all 1s ease-in;
+                -o-transition: all 1s ease-in;
+                transition: all 1s ease-in;
+            }
+            .countryCode--item{
+                color:map-get($map: $colors, $key: apptxt)
+            }
+            ion-item {
+                background-color: rgba(255, 255, 255, 0);
+                padding-left: 0 !important;
+                .item-inner {
+                    border-bottom-color: map-get($map: $colors, $key: apptxtdark) !important;
+                }
+                ion-input {
+                    color: map-get($map: $colors, $key: apptxt) !important;
+                }
+            }
+        }
+    }
+}

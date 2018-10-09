@@ -1,0 +1,68 @@
+page-addtasks {
+    background-color: #3C87F6;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Muli',sans-serif;
+
+    .list_title {
+        color : blue;
+        font-size: 15px
+    }
+
+    p.list_data {
+        color: red;
+    }
+
+    ion-title.header_title.title.title-md {
+        background-color: #233127;
+    }
+
+    ion-icon.icon.icon-md.ion-md-build {
+        color: white;
+    }
+
+    .icon_text {
+        font-size: 13px;
+        color: white;
+    }
+
+    .icon_size{
+        font-size: 15px
+    }
+
+    .search{
+        width: 70%;
+        display: inline-block;
+
+    }
+
+    .addButton{
+        color : #F2F2F2;
+    }
+
+    .list_header{
+        padding-bottom: 0px
+    }
+
+    .assigned {
+        border-bottom: 1px solid #DEDEDE;
+    }
+
+    .self_area {
+        display: inline-block;
+        flex-direction: column;
+    }
+
+    .toggle_but {
+        padding-left: 0px
+    }
+
+    .self_label {
+        font-size: 15px;
+        padding-right: 0px;
+        flex-direction: column;
+        margin-right: 0px;
+    }
+}

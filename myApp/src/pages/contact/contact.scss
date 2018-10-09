@@ -1,0 +1,97 @@
+page-contact {
+    background-color: #3C87F6;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Muli',sans-serif;
+
+    ion-content {
+        background-color: rgba(255, 255, 255, 0) !important;
+        color:#fff !important; 
+        ion-item{
+            background-color:rgba(255, 255, 255, 0) !important;
+        }
+    }
+
+    .list_title {
+        color : blue;
+        font-size: 15px
+    }
+
+    p.list_data {
+        color: red;
+    }
+
+    .fab_butt{
+        width: 45px;
+        height: 45px;
+        color: #3C87F6;
+    }
+
+    .delete{
+        color : rgb(77, 77, 216);
+        padding-left: 3%
+        
+    }
+
+    .view {
+        color: rgb(99, 99, 231);
+        font-size: 20px;
+        padding-top: 4px;
+    }
+
+    .header_nav {
+        position: relative;
+        text-align: center;
+    }
+
+    .header_item {
+        position: absolute;
+        top: 4px;
+    }
+
+    .header_title {
+        color: #A1A1A1;
+    }
+
+    .frist_card_title {
+        border-bottom: 1px solid #a7a5a3;
+        font-weight: 600;
+        color: #4A4C4F;
+    }
+
+    .badge {
+        background-color: #2F6BF6;
+    }
+
+    .f_card_link {
+        font-size: 17px
+    }
+
+    .summery_underline {
+        border-bottom: 1px solid #F2F2F2;
+    }
+
+    .fab_icon {
+        color:#3C87F6
+    }
+
+    .title {
+        font-size: 16px;
+        color: #4A4C4F;
+    }
+
+    .list-button {
+        border-bottom: 1px solid #F2F2F2;
+        height: 65px;
+    }
+
+    .arrow_color{
+        color:rgb(218, 216, 216)
+    }
+
+    .slide-item{
+        height: 65px;
+    }
+}

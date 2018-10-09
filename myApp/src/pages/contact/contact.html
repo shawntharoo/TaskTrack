@@ -1,0 +1,68 @@
+<ion-header>
+        <ion-navbar color="indigo"  class="header_nav">
+                <ion-item no-lines color="indigo"  class="header_item">
+            <ion-title  class="header_title">Groups</ion-title>
+            <ion-icon name="ios-search" (click)="showSearch()" color="light" item-end></ion-icon>
+            <!-- <ion-icon name="ios-notifications" color="light" item-end></ion-icon> -->
+        </ion-item>
+</ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-card>
+        <ion-searchbar *ngIf="search" [(ngModel)]="title"
+        [showCancelButton]="shouldShowCancel"
+        #searchToFocusContact
+        (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)"
+        (click)="searchUser()"></ion-searchbar>
+
+        <ion-item class="loadList" *ngFor="let grp of allgroups" (click)="fillBox(grp)">
+                <ion-label>
+                  <b>{{grp.title}}</b>
+                </ion-label>
+              </ion-item>
+            </ion-card>
+        <ion-card>
+                <ion-card-header   class="frist_card_title">
+                  Group Summary
+                </ion-card-header>
+                <ion-item>
+                    <ion-icon name="people" item-start></ion-icon>
+                    <p class="f_card_link">All Groups</p>
+                    <ion-badge item-end>{{grpcount}}</ion-badge>
+                  </ion-item>
+              </ion-card>
+
+              <ion-card>
+                    <ion-list-header text-center color="light">
+                            <p class="list_title"> All Groups </p>
+                          </ion-list-header>
+    <ion-list>
+        <!-- <p class="delete" (click)="deleteButton()">Delete</p> -->
+            <!-- <ion-item  *ngFor="let group of groups"  class="list-button" (click)="groupDetailView(group)">
+                    <ion-icon  *ngIf="removeicon && group.idgroup != 1" name="ios-remove-circle-outline" (click)="deleteGroup(group);  $event.stopPropagation()" item-start color="danger"></ion-icon>
+                    <p class="title"> {{group.title}}</p>
+                <ion-icon name="ios-people" [style.color]="group.color" item-start></ion-icon>
+                <ion-icon name="arrow-forward" item-end></ion-icon>
+            </ion-item> -->
+
+            <ion-item-sliding #item  *ngFor="let group of groups">
+                
+                    <button ion-item class="list-button" lines (click)="groupDetailView(group)">
+                            <p class="title"> {{group.title}}</p>
+                            <ion-icon name="ios-people" [style.color]="group.color" item-start></ion-icon>
+                            <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+                    </button>
+                        <ion-item-options side="right">
+                          <button ion-button color="danger" (click)="deleteGroup(group);  $event.stopPropagation()">Delete</button>
+                        </ion-item-options>
+                      </ion-item-sliding>
+
+    </ion-list>
+</ion-card>
+
+    <ion-fab right bottom>
+        <button ion-fab color="light" (click)="addGroup()" class="fab_butt"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
+  </ion-content>

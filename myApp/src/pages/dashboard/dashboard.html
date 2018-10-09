@@ -1,0 +1,134 @@
+<ion-header color="indigo">
+  <ion-navbar color="indigo">
+    <ion-item no-lines color="indigo">
+      <ion-title> Dashboard</ion-title>
+      <!-- <ion-icon name="create" item-end (click)="updateModel()" *ngIf="editicon"></ion-icon> -->
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-title text-center class="header_title">
+        <ion-icon name="build" class="icon_size">
+          <span class="icon_text">{{task.title}}</span>
+        </ion-icon>
+      </ion-title>
+  <div>
+      <form novalidate [formGroup]="myform">
+          <ion-list>
+              <!-- <ion-item>
+                  <ion-label>
+                    Assigned To Self
+                  </ion-label>
+                  <ion-toggle formControlName="self"></ion-toggle>
+                </ion-item>
+                <ion-item *ngIf="!myform.get('self').value">
+                  <ion-searchbar formControlName="assigned_to" [showCancelButton]="shouldShowCancel" placeholder="Assigned User (947********)"
+                    (ionInput)="onInput($event)" (click)="searchUser()"></ion-searchbar>
+                  <ion-item class="loadList" *ngFor="let conFil of contactListFiltered" (click)="fillBox(conFil)">
+                    <ion-label>
+                      <b>{{conFil.name}}</b>
+                    </ion-label>
+                  </ion-item>
+                </ion-item> -->
+            <ion-item>
+              <ion-label>
+                Title
+              </ion-label>
+              <ion-input type="text" class="form-control" formControlName="title"></ion-input>
+            </ion-item>
+
+            <div class="assigned">
+                <ion-item>
+                    <ion-searchbar formControlName="assigned_to" item-start [showCancelButton]="shouldShowCancel" placeholder="search user"
+                      (ionInput)="onInput($event)" (click)="searchUser()" class="search"  *ngIf="!myform.get('self').value"></ion-searchbar>
+    
+                      <ion-label class="self_label">
+                          Self
+                        </ion-label>
+                      <ion-toggle formControlName="self" class="toggle_but" item-end></ion-toggle>
+    
+                  </ion-item>
+    
+                  <ion-item class="loadList" *ngFor="let conFil of contactListFiltered" (click)="fillBox(conFil)">
+                      <ion-label>
+                        <b>{{conFil.name}}</b>
+                      </ion-label>
+                    </ion-item>
+                <!-- <ion-item>
+                    <ion-label>
+                      Assigned To Self
+                    </ion-label>
+                    <ion-toggle formControlName="self"></ion-toggle>
+                  </ion-item> -->
+    </div>
+
+            <ion-item>
+              <ion-label>
+                Description
+              </ion-label>
+              <ion-textarea type="text" class="form-control" formControlName="description"></ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                Group
+              </ion-label>
+              <ion-select formControlName="group" interface="popover">
+                <ion-option *ngFor="let group of groupList" [value]="group.idgroup">{{group.title}}</ion-option>
+              </ion-select>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label>Task Status</ion-label>
+              <ion-select formControlName="status" interface="popover">
+                <ion-option *ngFor="let stat of status" [value]="stat">{{stat}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Due Date</ion-label>
+              <ion-datetime displayFormat="MMM DD, YYYY HH:mm" class="form-control" formControlName="date" max="2100-12-31" (click)="datepicker()"></ion-datetime>
+            </ion-item>
+          </ion-list>
+          <button ion-button full (click)="updateTask()"  class="addButton">Update task</button>
+        </form>
+</div>
+
+<!-- <div *ngIf="updateMode && task">
+    <ion-card>
+      <ion-card-content>
+        {{task.title}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        {{task.description}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        {{task.firstname}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        {{task.due_date}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        {{task.grpTitle}}
+        <ion-icon name="paper" class="list_icons"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            Status - {{task.status}}
+        </ion-card-content>
+      </ion-card>
+    <ion-fab right bottom (click)="disscussView()">
+      <button ion-fab color="primary" class="fab_butt">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </button>
+    </ion-fab>
+  </div> -->
+</ion-content>

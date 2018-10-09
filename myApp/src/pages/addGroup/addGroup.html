@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="indigo">
+    <ion-item no-lines color="indigo">
+      <ion-title>Add Groups</ion-title>
+    </ion-item>
+  </ion-navbar>
+  <ion-title text-center class="header_title"><ion-icon name="build" class="icon_size"><span class="icon_text"> New Group</span></ion-icon> </ion-title>
+</ion-header>
+
+<ion-content>
+  <form novalidate [formGroup]="myForm">
+
+    <ion-list>
+      <ion-list-header>
+        Group Details
+      </ion-list-header>
+      <ion-item>
+        <ion-label stacked>
+          Group Title
+        </ion-label>
+        <ion-input type="text" formControlName="title" class="form-control"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>
+          Description
+        </ion-label>
+        <ion-input type="text" formControlName="description" class="form-control"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button (click)="addNewGroup()" full color="indigo">Add group</button>
+
+  </form>
+</ion-content>

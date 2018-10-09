@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-navbar color="indigo">
+        <ion-item no-lines color="indigo">
+            <ion-title> Comment</ion-title>
+        </ion-item>
+    </ion-navbar>
+    <ion-title text-center class="header_title">
+            <ion-icon name="build" class="icon_size">
+                    <span class="icon_text"> Jira Plugin </span>
+                  </ion-icon>
+    </ion-title>
+</ion-header>
+
+<ion-content>
+<!--https://www.djamware.com/post/5a629d9880aca7059c142976/build-ionic-3-angular-5-and-firebase-simple-chat-app-->
+
+
+    <ion-list>
+        <ion-item no-lines>
+            <div class="chat-message" text-right>
+                <div class="right-bubble">
+                    <span class="msg-name">Me</span>
+                    <span class="msg-date">25/07/2018</span>
+                    <p text-wrap>What main features would this have?</p>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item no-lines>
+            <div class="chat-message" text-left>
+                <div class="left-bubble">
+                    <span class="msg-name">Saman</span>
+                    <span class="msg-date">25/07/2018</span>
+                    <p text-wrap>MVP Should have QA and User</p>
+                </div>
+            </div>
+            </ion-item>
+            <ion-item no-lines>
+            <div class="chat-message" text-right>
+                <div class="right-bubble">
+                    <span class="msg-name">Me</span>
+                    <span class="msg-date">25/07/2018</span>
+                    <p text-wrap>What do we mean by user?</p>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item no-lines>
+            <div class="chat-message" text-left>
+                <div class="left-bubble">
+                    <span class="msg-name">Saman</span>
+                    <span class="msg-date">25/07/2018</span>
+                    <p text-wrap>QA Eng View</p>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-footer>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-10>
+                  <ion-input type="text" placeholder="Type a message" name="message"></ion-input>
+                </ion-col>
+                <ion-col col-2>
+                  <ion-icon md="md-paper-plane"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-footer>
+
+
+</ion-content>

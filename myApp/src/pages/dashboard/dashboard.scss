@@ -1,0 +1,69 @@
+page-dashboard {
+
+    background-color: #3C87F6;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Roboto';
+    
+    .list_title {
+        color : blue;
+        font-size: 15px
+    }
+
+    p.list_data {
+        color: red;
+    }
+
+    ion-title.header_title.title.title-md {
+        background-color: #233127;
+    }
+
+    ion-icon.icon.icon-md.ion-md-build {
+        color: white;
+    }
+
+    .icon_text {
+        font-size: 13px;
+        color: white;
+    }
+
+    .icon_size{
+        font-size: 15px
+    }
+
+    .fab_butt{
+        width: 45px;
+        height: 45px;
+    }
+
+    .list_icons{
+        float: right;
+    }
+
+    .addButton{
+        color : #F2F2F2;
+    }
+
+    .assigned {
+        border-bottom: 1px solid #DEDEDE;
+    }
+
+    .search{
+        width: 70%;
+        display: inline-block;
+
+    }
+
+    .toggle_but {
+        padding-left: 0px
+    }
+
+    .self_label {
+        font-size: 15px;
+        padding-right: 0px;
+        flex-direction: column;
+        margin-right: 0px;
+    }
+}

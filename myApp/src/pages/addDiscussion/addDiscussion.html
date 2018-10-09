@@ -1,0 +1,39 @@
+<ion-header>
+        <ion-navbar color="indigo">
+                <ion-item no-lines color="indigo">
+                    <ion-title text-center> Add Descussion</ion-title>
+                </ion-item>
+        </ion-navbar>
+        <ion-title text-center class="header_title"><ion-icon name="build" class="icon_size"><span class="icon_text"> New Descussion </span></ion-icon> </ion-title>
+      </ion-header>
+
+      <ion-content class="outer-content">
+        <form novalidate [formGroup]="myform">
+          <ion-list>
+              <ion-list-header class="list_header">
+                  Discussion & Details
+                </ion-list-header>
+            <ion-item>
+              <ion-label floating>
+                Title
+              </ion-label>
+              <ion-input type="text" class="form-control" formControlName="title"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>
+                Description
+              </ion-label>
+              <ion-input type="text" class="form-control" formControlName="description"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                Task
+              </ion-label>
+              <ion-select formControlName="task" interface="popover">
+                <ion-option *ngFor="let task of tasks" [value]="task.idtasks">{{task.title}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <button ion-button full (click)="addNewDiscussion()" color="indigo">Add Descussion</button>
+        </form>
+      </ion-content>

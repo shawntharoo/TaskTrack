@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="indigo">
+    <ion-item no-lines color="indigo">
+      <ion-title> Add Tasks</ion-title>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+    <ion-title text-center class="header_title">
+        <ion-icon name="build" class="icon_size">
+          <span class="icon_text"> New Task </span>
+        </ion-icon>
+      </ion-title>
+  <form novalidate [formGroup]="myform">
+    <ion-list>
+      <ion-list-header class="list_header">
+        Assignment & Details
+      </ion-list-header>
+      <ion-item>
+        <ion-label >
+          Title
+        </ion-label>
+        <ion-input type="text" class="form-control" #inputToFocus formControlName="title"></ion-input>
+      </ion-item>
+
+      <div class="assigned">
+        <ion-item>
+          <ion-searchbar [disabled]="!myform.get('title').valid" formControlName="assigned_to" item-start [showCancelButton]="shouldShowCancel" placeholder="search user" (ionInput)="onInput($event)"
+            (click)="searchUser()" class="search" *ngIf="!myform.get('self').value"></ion-searchbar>
+            <ion-label class="self_label">
+              Self
+            </ion-label>
+            <ion-toggle [disabled]="!myform.get('title').valid" formControlName="self" class="toggle_but" item-end></ion-toggle>
+        </ion-item>
+
+        <ion-item class="loadList" *ngFor="let conFil of contactListFiltered" (click)="fillBox(conFil)">
+          <ion-label>
+            <b>{{conFil.name}}</b>
+          </ion-label>
+        </ion-item>
+        <!-- <ion-item>
+                <ion-label>
+                  Assigned To Self
+                </ion-label>
+                <ion-toggle formControlName="self"></ion-toggle>
+              </ion-item> -->
+      </div>
+      <ion-item>
+        <ion-label>
+          Description
+        </ion-label>
+        <ion-textarea type="text" class="form-control" formControlName="description" [disabled]="!myform.get('title').valid"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Group
+        </ion-label>
+        <ion-select formControlName="group" interface="popover" [disabled]="!myform.get('title').valid">
+          <ion-option *ngFor="let group of groupList" [value]="group.idgroup">{{group.title}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Task Status</ion-label>
+        <ion-select formControlName="status" interface="popover" [disabled]="!myform.get('title').valid">
+          <ion-option *ngFor="let stat of status" [value]="stat">{{stat}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" class="form-control" formControlName="date" max="2100-12-31" (click)="datepicker()" [disabled]="!myform.get('title').valid"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <button ion-button full (click)="addNewTask()" color="indigo" [disabled]="!myform.get('title').valid">Add task</button>
+  </form>
+</ion-content>

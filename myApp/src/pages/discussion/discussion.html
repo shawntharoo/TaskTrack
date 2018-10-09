@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-navbar color="indigo">
+        <ion-item no-lines color="indigo">
+            <ion-title class="header_title"> Discussions</ion-title>
+            <ion-icon name="ios-search" (click)="showSearch()" color="light" item-end></ion-icon>
+            <ion-icon name="ios-notifications" color="light" item-end></ion-icon>
+            <!-- <ion-icon name="search" item-end></ion-icon>
+            <ion-icon name="md-more" item-end></ion-icon> -->
+        </ion-item>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+    <ion-list>
+        <ion-searchbar *ngIf="search" [(ngModel)]="name" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)"></ion-searchbar>
+
+        <ion-list-header text-center color="light">
+            <p class="list_title">Watching</p>
+        </ion-list-header>
+        
+        <!-- <ion-item-sliding #item *ngFor="let wdis of watchDiscussion">
+            <ion-item>
+                {{wdis.title}}
+            </ion-item>
+            <ion-item-options side="left">
+                <button ion-button color="danger" (click)="removeFromWatch(wdis)">Forget</button>
+            </ion-item-options>
+
+            <ion-item-options side="right">
+                <button ion-button (click)="viewMessage(wdis)">View</button>
+            </ion-item-options>
+        </ion-item-sliding> -->
+
+        <ion-list>
+                <p class="edit" (click)="enableRemovIcon()">Remove from watch</p>
+                  <button ion-item *ngFor="let wdis of watchDiscussion"  class="list-button"  (click)="viewMessage(wdis)">
+                    <ion-icon  *ngIf="removeicon" name="ios-remove-circle-outline" (click)="removeFromWatch(wdis);  $event.stopPropagation()" item-start color="danger"></ion-icon>
+                    <ion-icon name="chatboxes" [style.color]="user.color" item-start></ion-icon>
+                     <p class="title"> {{wdis.title}}</p>
+                    <!-- <ion-icon item-end name="eye" class="view"></ion-icon> -->
+                    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+                  </button>
+                </ion-list>
+
+
+
+        <ion-list-header text-center color="light">
+            <p class="list_title">Discussion List</p>
+        </ion-list-header>
+        <!-- <ion-item-sliding #item *ngFor="let odis of otherDiscussion">
+            <ion-item>
+                {{odis.title}}
+            </ion-item>
+            <ion-item-options side="left">
+                <button ion-button color="danger" (click)="addToWatch(odis)">Watch</button>
+            </ion-item-options>
+
+            <ion-item-options side="right">
+                <button ion-button (click)="viewMessage(odis)">View</button>
+            </ion-item-options>
+        </ion-item-sliding> -->
+        <ion-list>
+                <p class="edit" (click)="enableAddIcon()">Add to watch</p>
+                  <button ion-item *ngFor="let odis of otherDiscussion"  class="list-button"  (click)="viewMessage(odis)">
+                    <ion-icon  *ngIf="addicon" name="ios-remove-circle-outline" (click)="addToWatch(odis) ;  $event.stopPropagation()" item-start color="danger"></ion-icon>
+                    <ion-icon name="chatboxes" [style.color]="user.color" item-start></ion-icon>
+                     <p class="title"> {{odis.title}}</p>
+                    <!-- <ion-icon item-end name="eye" class="view"></ion-icon> -->
+                    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+                  </button>
+                </ion-list>
+
+    </ion-list>
+    </ion-card>
+    <ion-fab right bottom>
+        <button ion-fab color="light" class="fab_butt" (click)="addNewDiscussion()">
+            <ion-icon name="add"  class="fab_icon"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

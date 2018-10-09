@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="indigo">
+    <ion-item no-lines color="indigo">
+      <ion-title *ngIf="pageT == 'userPage'"> {{data.firstname}}</ion-title>
+      <ion-title *ngIf="pageT == 'groupPage'"> {{data.title}}</ion-title>
+      <!-- <ion-icon name="ios-notifications" color="light" item-end></ion-icon> -->
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-title text-center class="header_title">
+        <ion-icon name="build" class="icon_size"><span class="icon_text"> Summery View </span></ion-icon> 
+      </ion-title>
+    <ion-card>
+    <button ion-button full icon-end color="light" (click)="presentActionSheet()">
+        Sort By
+        <ion-icon name="arrow-down"></ion-icon>
+      </button>
+
+  <div padding>
+    <ion-segment [(ngModel)]="task">
+      <ion-segment-button value="active">
+          <div class="filter_title">{{active.length}} Active</div>
+      </ion-segment-button>
+      <!-- <ion-segment-button value="track">
+          <div class="filter_title">{{onTrack.length}} On Track</div>
+      </ion-segment-button> -->
+      <ion-segment-button value="delay">
+          <div class="filter_title">{{delayed.length}} Delayed</div>
+      </ion-segment-button>
+      <ion-segment-button value="completed">
+          <div class="filter_title">{{completed.length}} Completed</div>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="task">
+    <ion-list *ngSwitchCase="'active'">
+      <ion-item (click)="viewDashboard(atask)" *ngFor="let atask of active | orderBy:order : caseInsensitive  | filterBy:filter;" class="list-button">
+          <p class="title"> {{atask.title}} </p>
+        <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'track'">
+      <ion-item (click)="viewDashboard(ottask)" *ngFor="let ottask of onTrack | orderBy:order : caseInsensitive  | filterBy:filter;" class="list-button">
+          <p class="title"> {{ottask.title}} </p>
+        <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'delay'">
+      <ion-item (click)="viewDashboard(dtask)" *ngFor="let dtask of delayed | orderBy:order : caseInsensitive  | filterBy:filter;" class="list-button">
+          <p class="title"> {{dtask.title}} </p>
+        <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'completed'">
+      <ion-item (click)="viewDashboard(dtask)" *ngFor="let dtask of completed | orderBy:order : caseInsensitive  | filterBy:filter;" class="list-button">
+          <p class="title"> {{dtask.title}} </p>
+        <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-card>
+</ion-content>
