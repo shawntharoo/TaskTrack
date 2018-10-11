@@ -1,6 +1,6 @@
 export class Constants {
-    // public static URL_SERVICE_ENDPOINT: string = 'http://54.149.85.163:1340/api/';
-    public static URL_SERVICE_ENDPOINT: string = 'http://192.168.8.109:1337/api/';
+    public static URL_SERVICE_ENDPOINT: string = 'http://54.149.85.163:1340/api/';
+    // public static URL_SERVICE_ENDPOINT: string = 'http://192.168.8.109:1337/api/';
 
     public static URL_REGISTER: string = Constants.URL_SERVICE_ENDPOINT + 'accountsecurity/start';
     public static URL_VERIFY: string = Constants.URL_SERVICE_ENDPOINT + 'accountsecurity/verifyPhoneToken';

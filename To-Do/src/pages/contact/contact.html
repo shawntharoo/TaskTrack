@@ -54,7 +54,7 @@
                             <ion-icon name="ios-people" [style.color]="group.color" item-start></ion-icon>
                             <ion-icon md="ios-arrow-forward" class="arrow_color" item-end></ion-icon>
                     </button>
-                        <ion-item-options side="right">
+                        <ion-item-options side="right" *ngIf="group.idgroup != 1">
                           <button ion-button color="danger" (click)="deleteGroup(group);  $event.stopPropagation()">Delete</button>
                         </ion-item-options>
                       </ion-item-sliding>
