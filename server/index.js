@@ -32,10 +32,10 @@ const options = {
     }
 };
 
-const sessionStore = new MySQLStore(options,con);
+const sessionStore = new MySQLStore(options, con);
 
-con.connect(function(err){
-    if(err) {
+con.connect(function (err) {
+    if (err) {
         throw err;
     } else {
         console.log("Connected!");
@@ -49,8 +49,62 @@ con.connect(function(err){
         var port = config.PORT || 5151;
         server.listen(port);
         console.log("Magic happening on port " + port);
+        createDB_Table();
     }
 });
+
+createDB_Table = () => {
+    con.query("CREATE DATABASE todo", function (err, result) {
+        if (err) console.log("database already exists");
+        var taskTbl = "CREATE TABLE tasks (idtasks INT AUTO_INCREMENT PRIMARY KEY NOT NULL, assigned_by VARCHAR(45) NOT NULL, title VARCHAR(100) NOT NULL, description VARCHAR(700), assigned_to VARCHAR(45) NOT NULL, groupId INT(11) DEFAULT 1, status VARCHAR(45), due_date VARCHAR(45), created_date VARCHAR(45), assigned_name VARCHAR(100))";
+        con.query(taskTbl, function (err, result) {
+            if (err) console.log("Task table already exists");
+            else console.log("Task table created");
+        });
+
+        var userTbl = "CREATE TABLE users (idusers INT AUTO_INCREMENT PRIMARY KEY NOT NULL, phone_number VARCHAR(45) NOT NULL, country_code VARCHAR(45), firstname VARCHAR(45), lastname VARCHAR(45))";
+        con.query(userTbl, function (err, result) {
+            if (err) console.log("User table already exists");
+            else console.log("User table created");
+        });
+
+        var groupTbl = "CREATE TABLE groups (idgroup INT AUTO_INCREMENT PRIMARY KEY NOT NULL, title VARCHAR(45) NOT NULL, description VARCHAR(45), phone_number VARCHAR(45))";
+        con.query(groupTbl, function (err, result) {
+            if (err) console.log("groups table already exists");
+            else console.log("groups table created");
+        });
+
+        var userWatchingTbl = "CREATE TABLE userWatching (iduserWatching INT AUTO_INCREMENT PRIMARY KEY NOT NULL, watching VARCHAR(45), watcher VARCHAR(45))";
+        con.query(userWatchingTbl, function (err, result) {
+            if (err) console.log("userWatching table already exists");
+            else console.log("userWatching table created");
+        });
+
+        var onesignal_playerTbl = "CREATE TABLE onesignal_player (idonesignal INT AUTO_INCREMENT PRIMARY KEY NOT NULL, user VARCHAR(45), player_id VARCHAR(45))";
+        con.query(onesignal_playerTbl, function (err, result) {
+            if (err) console.log("onesignal_player table already exists");
+            else console.log("onesignal_player table created");
+        });
+
+        var discussionTbl = "CREATE TABLE discussions (idDiscussion INT AUTO_INCREMENT PRIMARY KEY NOT NULL, title VARCHAR(45), taskIid INT(11) NOT NULL, description VARCHAR(200))";
+        con.query(discussionTbl, function (err, result) {
+            if (err) console.log("discussions table already exists");
+            else console.log("discussions table created");
+        });
+
+        var messageTbl = "CREATE TABLE messages (idmessage INT AUTO_INCREMENT PRIMARY KEY NOT NULL, message VARCHAR(45), sender INT(11), time VARCHAR(45), discussion INT(11))";
+        con.query(messageTbl, function (err, result) {
+            if (err) console.log("messages table already exists");
+            else console.log("messages table created");
+        });
+
+        var discussionWatching = "CREATE TABLE discussionWatching (iddiscussionWatching INT AUTO_INCREMENT PRIMARY KEY NOT NULL, watching VARCHAR(45), watcher VARCHAR(45))";
+        con.query(discussionWatching, function (err, result) {
+            if (err) console.log("discussionWatching table already exists");
+            else console.log("discussionWatching table created");
+        });
+    });
+}
 
 
 app.use(cookieParser());
