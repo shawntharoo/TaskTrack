@@ -55,7 +55,7 @@ con.connect(function (err) {
 
 createDB_Table = () => {
     con.query("CREATE DATABASE todo", function (err, result) {
-        if (err) throw err;
+        if (err) console.log("database exists")
         var taskTbl = "CREATE TABLE tasks (idtasks INT AUTO_INCREMENT PRIMARY KEY NOT NULL, assigned_by VARCHAR(45) NOT NULL, title VARCHAR(100) NOT NULL, description VARCHAR(700), assigned_to VARCHAR(45) NOT NULL, groupId INT(11) DEFAULT 1, status VARCHAR(45), due_date VARCHAR(45), created_date VARCHAR(45), assigned_name VARCHAR(100))";
         con.query(taskTbl, function (err, result) {
             if (err) console.log("Task table already exists");
